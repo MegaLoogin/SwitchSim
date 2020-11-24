@@ -1,0 +1,15 @@
+
+__pycache__/Window.cpython-38.pyc
+__pycache__/Object.cpython-38.pyc
+__pycache__/Game.cpython-38.pyc
+__pycache__/Frame.cpython-38.pyc
+__pycache__/Connection.cpython-38.pyc
+__pycache__/Camera.cpython-38.pyc
+__pycache__/Animation.cpython-38.pyc
+.idea/NewCursa4.iml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/inspectionProfiles/profiles_settings.xml
+devices/__pycache__/PC.cpython-38.pyc
+devices/__pycache__/Switch.cpython-38.pyc
