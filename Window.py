@@ -1,6 +1,6 @@
 import pygame
 import pygame_gui
-from Game import *
+from App import *
 
 
 class Window:
@@ -13,7 +13,7 @@ class Window:
 
         self.fullscreen = False
 
-        self.game = Game(self, (0, 0), 0.5)
+        self.game = App(self, (0, 0), 0.5)
 
         keys = [*self.game.types]
         keys.insert(0, "None")
@@ -46,10 +46,10 @@ class Window:
                 return True
         return False
 
-    def procces_events(self):
+    def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.USEREVENT:
-                if event.user_type == "ui_button_pressed":
+                if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.gui["set_tps"]:
                         try:
                             value = float(self.gui["tps"].get_text())
@@ -64,7 +64,7 @@ class Window:
                     for el in self.game.objects:
                         if el.ui_window == event.ui_element:
                             el.save_gui_state()
-                if event.user_type == "ui_drop_down_menu_changed":
+                if event.user_type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED:
                     if event.ui_element == self.gui['selector']:
                         self.game.selected_object = self.gui['selector'].selected_option
             if event.type == pygame.KEYUP:
@@ -100,6 +100,7 @@ class Window:
                                     obj.selected = True
                                     self.game.buffer_device = obj
                                 else:
+                                    # print(obj.type, self.game.buffer_device.type)
                                     if not self.game.buffer_device.type == obj.type:
                                         f_port = self.game.buffer_device.get_free_port()
                                         s_port = obj.get_free_port()
@@ -147,13 +148,13 @@ class Window:
                 last_tick = pygame.time.get_ticks()
                 self.game.process_tick()
                 # print("----------------TICK------------------")
-            self.procces_events()
+            self.process_events()
             # print("draw")
             self.ui_manager.update(clock.tick(60) / 1000.0)
             self.draw_scene()
 
     def draw_scene(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill("grey")
 
         self.game.camera.draw()
         self.ui_manager.draw_ui(self.screen)

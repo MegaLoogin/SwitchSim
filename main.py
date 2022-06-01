@@ -7,7 +7,7 @@ size = width, height = 1200, 700  # 800, 600
 def main():
     pygame.init()
 
-    window = Window(size, "Cursa4")
+    window = Window(size, "SwitchSim")
     window.run_cycle()
 
 
