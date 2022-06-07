@@ -1,9 +1,8 @@
-class Frame:
-    def __init__(self, rtype, message, reciever, sender=None):
-        self.type = rtype
-        self.message = message
-        self.reciever = reciever
-        self.sender = sender
+class Frame(object):
+    def __init__(self, sender_address, target_address, packet):
+        self.sender_address = sender_address  # mac
+        self.target_address = target_address  # mac
+        self.packet = packet
 
     def __str__(self):
-        return "Method: " + self.type + "<br>Message: " + self.message + "<br>Reciever: " + self.reciever + "<br>Sender: " + self.sender
+        return f"Sender: {self.sender_address}; Target: {self.target_address}; Packet: [ {str(self.packet)} ]"
